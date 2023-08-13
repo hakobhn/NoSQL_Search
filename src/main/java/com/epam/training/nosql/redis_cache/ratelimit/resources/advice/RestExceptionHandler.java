@@ -1,8 +1,6 @@
 package com.epam.training.nosql.redis_cache.ratelimit.resources.advice;
 
 
-import com.epam.training.nosql.redis_cache.ratelimit.config.LocalizedMessageProvider;
-import com.epam.training.nosql.redis_cache.ratelimit.exception.RateLimitExhausted;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +11,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 
 import java.time.Duration;
 import java.util.Map;
@@ -27,8 +24,6 @@ public class RestExceptionHandler {
 
     @Value("${bucket.refresh.duration}")
     private Duration refreshDuration;
-
-    private final LocalizedMessageProvider messageProvider;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handle(MethodArgumentNotValidException ex) {

@@ -2,27 +2,22 @@ package com.epam.training.nosql.redis_cache.ratelimit.service.impl;
 
 import com.epam.training.nosql.redis_cache.ratelimit.model.BusinessRequest;
 import com.epam.training.nosql.redis_cache.ratelimit.model.RateLimitRule;
-import com.epam.training.nosql.redis_cache.ratelimit.model.RequestData;
 import com.epam.training.nosql.redis_cache.ratelimit.service.RateLimiterService;
 import io.github.bucket4j.Bandwidth;
+import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;
 import org.springframework.stereotype.Service;
-import io.github.bucket4j.Bucket;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
 
 @Service
 public class RateLimiterServiceImpl implements RateLimiterService {
 
     private final Map<BusinessRequest, Bucket> cache = new ConcurrentHashMap<>();
     private final List<RateLimitRule> rateLimitRules;
-
 
 
     public RateLimiterServiceImpl(List<RateLimitRule> rateLimitRules) {

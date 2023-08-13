@@ -3,9 +3,6 @@ package com.epam.training.nosql.redis_cache.ratelimit.util;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
 
-import java.util.Enumeration;
-import java.util.Iterator;
-
 @UtilityClass
 public class HttpUtils {
 
@@ -26,7 +23,7 @@ public class HttpUtils {
 
     public static String getRequestIP(HttpServletRequest request) {
         String value = null;
-        for (String header: IP_HEADERS) {
+        for (String header : IP_HEADERS) {
             value = request.getHeader(header);
             if (value == null || value.isEmpty()) {
                 continue;

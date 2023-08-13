@@ -2,6 +2,7 @@ package com.epam.training.nosql.redis_cache.ratelimit.model;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
 import java.util.concurrent.TimeUnit;
 
 
