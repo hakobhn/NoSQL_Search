@@ -1,0 +1,35 @@
+# Run pull command:  docker-compose pull
+# Start cluster command: docker-compose up -d
+# Monitor cluster: docker ps -a
+# Stop cluster command: docker-compose down
+
+version: '3.6'
+
+services:
+
+#  ratelimit:
+#    build:
+#      context: ./
+#    container_name: ratelimit
+#    restart: on-failure
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/dockerdemo
+#      USERS_MS_BASE_URI: http://users-ms:8080
+#    depends_on:
+#      - redis
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - ./redis-cache:/data
+
+# Volumes
+volumes:
+  data:
+    driver: local

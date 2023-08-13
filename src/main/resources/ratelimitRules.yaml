@@ -1,0 +1,18 @@
+- clientIp: 127.0.0.1
+  accountId: '1'
+  requestType: login
+  allowedNumberOfRequests: 10000
+  timeInterval: MINUTE
+
+- clientIp: 127.0.0.1
+  accountId: '1'
+  requestType: login
+
+- clientIp:
+  allowedNumberOfRequests: 100
+  timeInterval: MINUTE
+
+- clientIp:
+  allowedNumberOfRequests: 3
+  requestType: login
+  timeInterval: MINUTE
